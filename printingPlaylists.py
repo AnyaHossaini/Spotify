@@ -14,7 +14,8 @@ import os
 from dotenv import load_dotenv
 
 
-
+# After using Spotify's webAPI place your Client ID and Client Secret in the fields followed by all the 
+# credentials needed then go and print the playlist
 def main():
 
     # Figure out how to call this from env file
@@ -25,24 +26,37 @@ def main():
     client_credentials_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-    playlist_id = 'spotify:playlist:7yHbWypQOtJaQNokIsWDdI' #URI
+    # Capture URI
+    playlist_id = 'spotify:playlist:7yHbWypQOtJaQNokIsWDdI'
+
+    # Go to PlaylistName function
     playlistName(sp,playlist_id)
 
 def playlistName(sp,playlist_id):
 
+    # Get playlist name from the URI
     playlist = sp.playlist(playlist_id)
+
+    # Print the playlist name
     print('Playlist: ' + playlist['name']) 
     print('\n')
-    trackList(sp,playlist_id)
 
-def trackList(sp,playlist_id):
+    # Move to tracklist
+    trackAndArtist(sp,playlist_id)
 
+def trackAndArtist(sp,playlist_id):
+
+    # Get trackList from URI
     tracks = sp.playlist_tracks(playlist_id)
+    count = 0
+   
 
-    # Print out track list in order of the playlist
+    # Print out track list & artists in order of the playlist
     for item in tracks['items']:
         track = item['track']
-        print(track['name'])
+        for artist in track['artists']:
+            print(artist['name'],track['name'])
+            print('\n')
 
 main()
 
