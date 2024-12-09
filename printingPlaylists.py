@@ -21,7 +21,6 @@ def main():
     CLIENT_ID = "b5e6db3ad1fc4d8e9af48447b3f14924"
     CLIENT_SECRET = 
 
-
     # Processing credentials
     client_credentials_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
