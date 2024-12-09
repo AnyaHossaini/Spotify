@@ -10,6 +10,10 @@ Take a playlist and print the songs thats it...
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
+import os
+from dotenv import load_dotenv
+
+
 
 def main():
 
@@ -28,7 +32,8 @@ def main():
 def playlistName(sp,playlist_id):
 
     playlist = sp.playlist(playlist_id)
-   # print(playlist) 
+    print('Playlist: ' + playlist['name']) 
+    print('\n')
     trackList(sp,playlist_id)
 
 def trackList(sp,playlist_id):
