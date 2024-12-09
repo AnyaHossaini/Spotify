@@ -4,6 +4,10 @@ Take a playlist and print the songs thats it...
 1. Get to the playlist -- Print out the name of the playlist ( DONE )
 2. Read the playlist (Done)
 3. Print out the track name of each item on the playlist (Done)
+4. Have featured artist names be printed on the same line getting rid of duplicates
+5. Print out how many times ive listended to the song 
+
+6. Create another file (class) to read in multple playlist_ids and have them print out
 
 '''
 
@@ -12,7 +16,6 @@ from spotipy.oauth2 import SpotifyClientCredentials
 
 import os
 from dotenv import load_dotenv
-
 
 # After using Spotify's webAPI place your Client ID and Client Secret in the fields followed by all the 
 # credentials needed then go and print the playlist
@@ -48,21 +51,13 @@ def trackAndArtist(sp,playlist_id):
 
     # Get trackList from URI
     tracks = sp.playlist_tracks(playlist_id)
-    count = 0
    
-
     # Print out track list & artists in order of the playlist
     for item in tracks['items']:
         track = item['track']
         for artist in track['artists']:
+            # If artist for track > 1 print artists together else: 
             print(artist['name'],track['name'])
             print('\n')
 
 main()
-
-
-
-
-
-
-
