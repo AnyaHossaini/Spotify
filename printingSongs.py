@@ -23,22 +23,26 @@ def main():
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
     playlist_id = 'spotify:playlist:7yHbWypQOtJaQNokIsWDdI' #URI
+    playlistName(sp,playlist_id)
 
-def playlist(sp):
+def playlistName(sp,playlist_id):
 
     playlist = sp.playlist(playlist_id)
-    return playlist
+   # print(playlist) 
+    trackList(sp,playlist_id)
 
-print(playlist['name'])
-
-def trackList(sp):
+def trackList(sp,playlist_id):
 
     tracks = sp.playlist_tracks(playlist_id)
 
     # Print out track list in order of the playlist
     for item in tracks['items']:
         track = item['track']
-        return(track['name'])
+        print(track['name'])
+
+main()
+
+
 
 
 
