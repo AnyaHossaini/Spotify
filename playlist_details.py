@@ -23,7 +23,7 @@ def main():
 
     # Figure out how to call this from env file
     CLIENT_ID = "b5e6db3ad1fc4d8e9af48447b3f14924"
-    CLIENT_SECRET = 
+    CLIENT_SECRET = ""
 
     # Processing credentials
     client_credentials_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
@@ -57,11 +57,8 @@ def trackAndArtist(sp,playlist_id):
         track = item['track']
         artistNames = ""
         for artist in track['artists']:
-            # If artist for track > 1 print artists together else: 
             artistNames = artistNames + artist['name'] + ", "
-        print(artistNames + track['name'])
-        
-            
+        print(artistNames + "- " + track['name'])
             
 
 main()
